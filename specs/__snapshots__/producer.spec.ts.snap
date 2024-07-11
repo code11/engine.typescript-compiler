@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should compile a producer: should compile a producer 1`] = `
+
+const foo: producer = ({ foo = observe.foo }) => {}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = {
+    fn: ({ foo }) => { },
+    props: { type: "STRUCT", value: { foo: { type: "OBSERVE", path: [{ type: "CONST", value: "foo" }] } } },
+    type: "producer",
+    buildId: "RandomId"
+};
+
+`;
+
+exports[`should support props arguments for passthrough: should support props arguments for passthrough 1`] = `
+
+const foo: producer = (props) => {}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = {
+    fn: (props) => { },
+    props: { type: "PASSTHROUGH" },
+    type: "producer",
+    buildId: "RandomId"
+};
+
+`;
+
+exports[`should support simple prop params: should support simple prop params 1`] = `
+
+const foo: producer = ({ prop }) => {}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const foo = {
+    fn: ({ prop }) => { },
+    props: { type: "STRUCT", value: { prop: { type: "VALUE", value: { type: "EXTERNAL", path: ["prop"] } } } },
+    type: "producer",
+    buildId: "RandomId"
+};
+
+`;
